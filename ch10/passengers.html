@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>passengers</title>
+</head>
+<body>
+
+
+  <script>
+      let passengers = [{ name: 'Jane Doloop', paid: true, ticket: 'coach' },
+        { name: 'Dr. Evel', paid: true , ticket: 'firstclass' },
+        { name: 'Susan Property', paid: false , ticket: 'firstclass' },
+        { name: 'John Funcall', paid: true, ticket: 'premium' }]
+
+    let allCanFly = processPassengers(passengers, checkNoFlyList); 
+    if (!allCanFly) {
+      console.log("no-fly list!");
+    }
+    
+
+    let allPaid = processPassengers(passengers, checkNotPaidList);
+    if (!allPaid) {
+      console.log("not everyone has paid");
+    }
+
+    processPassengers(passengers, printPassengers);
+    
+    function processPassengers(passengers, func) {
+      for (let i = 0; i < passengers.length; i += 1) {
+        if (func(passengers[i])) {
+          return false;
+        }
+      }
+      return true;
+    } 
+
+    function serrvePassengers(passengers) {
+      for (let i = 0; i < passengers.length; i += 1) {
+        serveCustomers(passengers[i]);
+      }
+    }
+
+    serrvePassengers(passengers);
+
+    function serveCustomers(passenger) {
+      let getDrinkOrderFunction = createDrinkOrder(passenger);
+      getDrinkOrderFunction();
+
+      let getDinnerOrderFunction = createDinnerOrder(passenger);
+      getDinnerOrderFunction();
+    }
+
+    function createDrinkOrder(passenger) {
+      let orderFunction;
+
+      if (passenger.ticket === 'firstclass') {
+        orderFunction = function() {
+            alert('cocktail or wine?');
+        };
+      } else {
+        orderFunction = function() {
+          if (passenger.ticket === 'premium') {
+            alert('wine?');
+          }
+          alert('cola or water?');
+        };
+      }
+
+      return orderFunction;
+    }
+
+    function createDinnerOrder(passenger) {
+      let orderFunction;
+
+      if (passenger.ticket === 'firstclass') {
+        orderFunction = function() {
+          alert('chicken or pasta?');
+        }
+      } else if (passenger.ticket === 'premium') {
+        orderFunction = function() {
+          alert('snack box or cheese plate?');
+        } 
+      } else {
+        orderFunction = function() {
+          alert('peanuts or pretzels?');
+        }
+      }
+
+      return orderFunction;
+    }
+
+    function checkNoFlyList(passenger) {
+      return (passenger.name !== 'Dr. Evel');
+    }
+
+    function checkNotPaidList(passenger) {
+      return (!passenger.paid);
+    }
+
+    function printPassengers(passenger) {
+      console.log(`${passenger.name}: ${passenger.paid}`);
+    }
+  </script>
+</body>
+</html>
