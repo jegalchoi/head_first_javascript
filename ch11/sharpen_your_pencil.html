@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sharpen Your Pencil</title>
+</head>
+<body>
+  <script>
+    window.onload = function() {
+      //document.getElementById('bake').onclick = handleButton;
+    }
+
+    function done() {
+      alert('cookies are ready...');
+      console.log('cooling cookies');
+      let cool = setTimeout(function() {
+        alert('cookies are cool...');
+      }, 1000);
+    }
+
+    function makePassword(password) {
+      return function(passwordGuess) {
+        return (passwordGuess === password);
+      }
+    }
+
+    let tryGuess = makePassword('secret');
+    console.log(tryGuess('nope'));
+    console.log(tryGuess('secret'));
+
+    function multiN(n) {
+      return function(num) {
+        return num * n;
+      }
+    }
+
+    let multiBy3 = multiN(3);
+    console.log(multiBy3(2));
+    console.log(multiBy3(3));
+
+    function makeCounter() {
+      let count = 0;
+
+      let obj = {
+        increment: function() {
+          count += 1;
+          return count;
+        }
+      }
+
+      return obj.increment;
+    }
+
+    let objCounter = makeCounter();
+    console.log(objCounter());
+    console.log(objCounter());
+
+  </script>
+</body>
+</html>
