@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    function Car(params) {
+      this.make = params.make;
+      this.year = params.year;
+      this.color = params.color;
+      this.seats = params.seats;
+      this.convertible = params.convertible;
+      this.mileage = params.mileage;
+      this.started = false;
+      this.start = function() {
+        if (!this.started) {
+          this.started = true;
+          console.log('starting car');
+        } else {
+          console.log('car is already running');
+        }
+      };
+      this.drive = function() {
+        if (this.started) {
+          console.log('zoom zoom');
+        } else {
+          console.log('start the car...');
+        }
+      };
+      this.stop = function() {
+        if (this.started) {
+          this.started = false;
+          console.log('stopping car');
+        } else {
+          console.log('car is already stopped');
+        }
+      };
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

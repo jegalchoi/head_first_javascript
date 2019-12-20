@@ -1,0 +1,46 @@
+function Duck(type, canFly) {
+  this.type = type;
+  this.canFly = canFly;
+}
+
+function Widget(partNo, size) {
+  this.partNo = partNo;
+  this.size = size;
+}
+
+function FormFactor(material, widget) {
+  this.material = material;
+  this.widget = widget;
+}
+
+let widgetA = new Widget(100, 'large');
+let widgetB = new Widget(101, 'small');
+let formFactorA = new FormFactor('plastic', widgetA);
+let formFactorB = new FormFactor('metal', widgetB);
+
+
+function Coffee(roast, ounces) {
+  this.roast = roast;
+  this.ounces = ounces;
+  this.getSize = function() {
+    if (this.ounces === 8) {
+      return 'small';
+    } else if (this.ounces === 12) {
+      return 'medium';
+    } else {
+      return 'large';
+    }
+  };
+  this.toString = function() {
+    return `You've ordered a ${this.getSize()} ${this.roast}`;
+  };
+}
+
+let houseBlend = new Coffee('house blend', 12);
+console.log(houseBlend.toString());
+
+
+function dogCatcher(dog) {
+  return dog instanceof Dog;
+  }
+}
